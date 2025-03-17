@@ -10,10 +10,28 @@
   align-items: center;
   padding-bottom: 15px;
   margin-bottom: 15px;
-  border-bottom: 5px solid #232c3b;
+  border-bottom: 5px solid var(--secondary_color);
 }
 
 .header-container h1 {
   font-size: 2.2rem;
   font-weight: 300;
+}
+
+.sub-header-container{
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  text-align: right;
+}
+
+.sub-header-title {
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.sub-header-balance {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--primary_color);
 }
