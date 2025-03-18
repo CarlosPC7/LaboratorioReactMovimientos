@@ -5,41 +5,23 @@ import classes from "./movement-list.page.module.css";
 import {MovementListTableComponent} from "./components"
 import {getMovements} from '@/pages/movement-list/api/movement-list.api';
 import { mapMovementListFromApiToVm } from "./movement-list.mapper";
+import { useParams } from "react-router-dom";
 
-// const mockMovementsData: MovementsVm[] = [
-//   {
-//     id: "1",
-//     description: "Nómina noviembre",
-//     amount: 900,
-//     balance: 1490,
-//     transaction: new Date("2019-12-09T21:30:00"),
-//     realTransaction: new Date("2019-12-09T21:30:00"),
-//   },
-//   {
-//     id: "2",
-//     description: "Alquiler noviembre",
-//     amount: -400,
-//     balance: 590,
-//     transaction: new Date("2019-12-07T11:30:00"),
-//     realTransaction: new Date("2019-12-08T20:00:10"),
-//   },
-//   {
-//     id: "3",
-//     description: "Gastos móvil",
-//     amount: -24,
-//     balance: 990,
-//     transaction: new Date("2019-12-01T07:01:00"),
-//     realTransaction: new Date("2019-12-02T12:00:10"),
-//   },
-// ]
+interface Props {
+  movementIndividual: MovementsVm;
+};
 
-export const MovementListPage: React.FC = () => {
+export const MovementListPage: React.FC<Props> = (props) => {
+  const {movementIndividual} = props;
 
+  const { id } = useParams<{ id?: string }>();
   const [movementsList, setMovementsList] = React.useState<MovementsVm[]>([]);
 
   React.useEffect(() => {
-    getMovements().then((result) => setMovementsList(mapMovementListFromApiToVm(result)))
-  }, [])
+    if (id) {
+    getMovements(id).then((result) => setMovementsList(mapMovementListFromApiToVm(result)));
+  }
+}, [id]);
 
   return (
     <AppLayout>
@@ -48,7 +30,7 @@ export const MovementListPage: React.FC = () => {
           <h1>Saldos y Últimos movimientos</h1>
           <div className={classes.subHeaderContainer}>
             <p className={classes.subHeaderTitle}>SALDO DISPONIBLE</p>
-            <p className={classes.subHeaderBalance}>1490 €</p>
+            <p className={classes.subHeaderBalance}>{movementIndividual.balance} </p>
           </div>
         </div>
         <MovementListTableComponent movementsList={movementsList}/>
