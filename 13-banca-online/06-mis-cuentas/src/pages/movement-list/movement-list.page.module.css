@@ -20,18 +20,18 @@
 
 .sub-header-container{
   display: flex;
-  justify-content: column;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
   text-align: right;
 }
 
 .sub-header-title {
-  font-size: 10px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .sub-header-balance {
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 32px;
+  font-weight: 700;
   color: var(--primary_color);
 }
