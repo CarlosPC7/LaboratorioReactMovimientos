@@ -35,3 +35,16 @@
   font-weight: 700;
   color: var(--primary_color);
 }
+
+.header-second-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.header-second-container p {
+  font-size: 18px;
+  font-weight: 700;
+}

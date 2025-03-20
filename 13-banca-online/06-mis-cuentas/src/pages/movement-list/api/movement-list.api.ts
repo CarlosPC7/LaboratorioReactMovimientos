@@ -9,6 +9,6 @@ export const getMovements = (accountId: string): Promise<MovementsApi[]> =>
 
 const urlAccountById = `${import.meta.env.VITE_BASE_API_URL}/account-list`;
 
-export const getAccountById = (id: string): Promise<AccountByIdApi[]> =>
-  Axios.get<AccountByIdApi[]>(urlAccountById,{ params: { id } }).then(
+export const getAccountById = (id: string): Promise<AccountByIdApi> =>
+  Axios.get<AccountByIdApi>(`${urlAccountById}/${id}`).then(
     ({data}) => data);

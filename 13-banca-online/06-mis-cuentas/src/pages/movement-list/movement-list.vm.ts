@@ -14,3 +14,11 @@ export interface AccountByIdVm {
   balance: string;
   lastTransaction: Date;
 }
+
+export const createEmptyAccountById = (): AccountByIdVm => ({
+  id: "",
+  iban: "",
+  name: "",
+  balance: "",
+  lastTransaction: new Date(),
+});
